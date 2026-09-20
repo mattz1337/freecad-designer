@@ -16,4 +16,3 @@ Read for functional parts, mechanisms, fasteners, and manufacturing preparation.
 - Rotate copies for print export; leave the CAD assembly in its intended placement. Document any relaxed versus assembled geometry difference.
 - For machining, sheet metal, or other processes, establish the actual process constraints. Check tool access, internal radii, stock or bend assumptions as relevant. Do not claim a valid toolpath or flat pattern without generating and checking it through a suitable available tool.
 - Supply hardware quantities, assembly notes, and material/process assumptions for projects that require them. Record unresolved prototype checks without treating every concept as print-ready or production-ready.
-

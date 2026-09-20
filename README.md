@@ -58,4 +58,3 @@ It distinguishes native parametric models from script-generated shapes, direct e
 - `agents/openai.yaml`: Codex skill metadata.
 
 See the [official skill documentation](https://learn.chatgpt.com/docs/build-skills) for discovery and configuration.
-

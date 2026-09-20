@@ -41,4 +41,3 @@ Before writing model code, read [FreeCAD execution and verification](references/
 - Export only the formats needed. Preserve units, intended world/local coordinates, and useful structure. Verify exported geometry or meshes as appropriate; STL is unitless, so state the intended units. Do not apply instance transforms twice.
 - Save the final document when a CAD deliverable is requested. For a small edit, concise confirmation and the updated file may suffice. For a substantial project, add appropriate source files, exports, checks, and assembly or manufacturing instructions.
 - Report what changed, important dimensions, verification performed, and unresolved failures or warnings. Distinguish geometric checks from physical testing, solved simulations, and manufacturability claims.
-

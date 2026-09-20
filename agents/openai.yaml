@@ -2,4 +2,3 @@ interface:
   display_name: "FreeCAD Designer"
   short_description: "Create, edit, inspect, and export FreeCAD models"
   default_prompt: "Use $freecad-designer to help with my CAD project through FreeCAD MCP, inspecting existing geometry where relevant and checking the final result."
-
