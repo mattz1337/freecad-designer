@@ -21,11 +21,11 @@ For a simple pose driver, store each instance's rest placement and rotation cent
 After recomputation, record:
 
 - Document name, principal input dimensions, assumptions, and object names.
-- isNull/isValid, solid count, and invalid/error object states for relevant solids.
+- isNull/isValid, expected topology (solid, shell, face, wire, or mesh), and invalid/error object states. Do not require intentional surfaces or wires to be closed solids.
 - World-space overall bounds excluding hidden masters and reference geometry unless explicitly included.
 - Positive common volume for candidate interference pairs, using bounding boxes first. State the numeric tolerance and intentional contacts/exclusions. Do not infer correctness from zero intersection alone: gaps, nut capture, bearing fits, and tool access require separate review.
 - Motion sample angles or translations and any detected collisions. Restore the intended delivered pose afterward.
-- Per-part STL quantity, units (millimetres), orientation, bounds, and closed-mesh result.
+- For requested print exports: per-part STL quantity, intended units, orientation, bounds, and closed-mesh result. For other exchanges, check the relevant topology, placement, and dimensions after export or reimport.
 
 For STL orientation, copy the shape, rotate the copy to the chosen print orientation, and translate its bounding-box minimum to the build plane. Leave document placements intact. Use appropriate tessellation rather than excessive mesh density. Relaxed flexible parts may need a separate export geometry; document that difference.
 

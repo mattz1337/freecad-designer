@@ -1,4 +1,5 @@
 interface:
-  display_name: "FreeCAD Mechanical Designer"
-  short_description: "Design and verify printable FreeCAD mechanisms"
-  default_prompt: "Use $freecad-mechanical-designer to turn my idea into a printable working model using FreeCAD MCP, with checked geometry and assembly instructions."
+  display_name: "FreeCAD Designer"
+  short_description: "Create, edit, inspect, and export FreeCAD models"
+  default_prompt: "Use $freecad-designer to help with my CAD project through FreeCAD MCP, inspecting existing geometry where relevant and checking the final result."
+
