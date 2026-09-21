@@ -10,6 +10,8 @@ Background execute_code_async must not access the GUI or mutate document objects
 
 A timeout does not prove an operation failed or stopped. Inspect document/file state or job status before retrying mutations. Use one bounded retry after a healthy probe when appropriate; do not repeatedly queue the same build. Preserve completed output and report a persistent connection failure.
 
+Dense texture sketches and repeated Boolean operations can take much longer than a smooth model. Choose an execution budget or isolated build before starting, and write progress checkpoints for long generators. After a GUI timeout, use an available status probe that does not itself require GUI dispatch; a temporarily stuck status can recover when the queued operation finishes. Verify the completed artifacts before deciding to rerun. File existence alone is insufficient if a generator initially copies its baseline to the output path.
+
 ## Repeated parts and motion
 
 Keep master shapes in a library and assembly instances as App::Link objects. Test visibility after hiding masters. Check each instance's world-space bounds before export because linked shapes may already include placement.
@@ -22,10 +24,13 @@ After recomputation, record:
 
 - Document name, principal input dimensions, assumptions, and object names.
 - isNull/isValid, expected topology (solid, shell, face, wire, or mesh), and invalid/error object states. Do not require intentional surfaces or wires to be closed solids.
+
 - World-space overall bounds excluding hidden masters and reference geometry unless explicitly included.
 - Positive common volume for candidate interference pairs, using bounding boxes first. State the numeric tolerance and intentional contacts/exclusions. Do not infer correctness from zero intersection alone: gaps, nut capture, bearing fits, and tool access require separate review.
 - Motion sample angles or translations and any detected collisions. Restore the intended delivered pose afterward.
 - For requested print exports: per-part STL quantity, intended units, orientation, bounds, and closed-mesh result. For other exchanges, check the relevant topology, placement, and dimensions after export or reimport.
+
+An invalid dependent fillet can retain a cached, geometrically valid Shape. Check feature states through the dependency chain, repair changed edge references where necessary, and recompute before accepting the tip or exporting it.
 
 For STL orientation, copy the shape, rotate the copy to the chosen print orientation, and translate its bounding-box minimum to the build plane. Leave document placements intact. Use appropriate tessellation rather than excessive mesh density. Relaxed flexible parts may need a separate export geometry; document that difference.
 

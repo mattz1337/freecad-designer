@@ -1,0 +1,44 @@
+{
+  "revision": "V02",
+  "units": "mm",
+  "extension_mm": 8.53,
+  "lip_depth_mm": 1.6,
+  "lip_width_mm": 1.4,
+  "lip_to_estimated_edge_clearance_mm": 0.2,
+  "nominal_center_gap_mm": 2.7699999999999996,
+  "nominal_existing_blade_slot_mm": 2.17,
+  "lip_overlap_with_metal_thickness_mm": 1.4500000000000002,
+  "blade_motion": "Not simulated; actual blade/pivot envelope unknown",
+  "reference": "V01 estimated outline retained; no dimensional refit inferred from photo",
+  "parts": [
+    {
+      "name": "Fenster",
+      "valid": true,
+      "solids": 1,
+      "dimensions_mm": [
+        77.53,
+        27.0,
+        6.984999999999999
+      ],
+      "reference_intersection_mm3": 0.0,
+      "lip_center_slab_intersection_mm3": 0.0,
+      "stl_closed_after_readback": true,
+      "features_with_errors": []
+    },
+    {
+      "name": "Rueckseite",
+      "valid": true,
+      "solids": 1,
+      "dimensions_mm": [
+        77.53,
+        27.0,
+        6.984999999999999
+      ],
+      "reference_intersection_mm3": 0.0,
+      "lip_center_slab_intersection_mm3": 0.0,
+      "stl_closed_after_readback": true,
+      "features_with_errors": []
+    }
+  ],
+  "shell_intersection_mm3": 0.0
+}

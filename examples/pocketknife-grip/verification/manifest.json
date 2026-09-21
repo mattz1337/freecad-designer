@@ -1,0 +1,22 @@
+{
+  "algorithm": "SHA-256",
+  "paths_relative_to": "examples/pocketknife-grip",
+  "files": {
+    "images/concepts-redacted.png": "3608728a87d37a117486c2d1f26a3abeacbeafb4fc1b9ffd35923c7cd9a3c508",
+    "images/v02-assembly.png": "28c8d53531fe97eb21ee498aad90a80aebf2c0069a29f3bb5ccf0e2fdd0d389b",
+    "images/v02-retaining-lip.png": "cb5ff9a07f3b215243e3cb4201494811f57d2ea86acaccd0e823668d2369e266",
+    "images/v03-small-panels.png": "5033014b1b429562a8ca5da4d4482fb5880fd89cc65482187e89a376834ae917",
+    "images/v04-diamond.png": "4b2304a31ddd26c4945842dc53d26dba57386ecec38b475fd7f3efd23f7242d7",
+    "images/v04-reverse.png": "e73324219a1bcfa16e1c6dac31a5484bafd460e27be10d8c1714a5d48fe2ec35",
+    "models/diamond-v04.FCStd": "f52daa87ff39d3910db3c6ebc57b2d6dd5be0466f7adf1fca0c8d4e75e6a32b1",
+    "models/fit-confirmed-v02.FCStd": "c56c96c5a62b7f3b5d405755ac749a8b3d52528098fcfb819fd81b9784995d75",
+    "print/v02-reverse.stl": "e8cfb85e13a2f0e92895d3c56dc9af3d77fb6725f8c00c57b6c461a689c274ce",
+    "print/v02-window.stl": "a60db291c1feb1a6a50b8dda1fbb33f170a959fb2a27f21e4820a699020ff1dd",
+    "print/v04-reverse.stl": "040ed13850ab9f04d6f5aaec526a7c23ff12272ebda47f2749069f9b67dff498",
+    "print/v04-window.stl": "3b9e804bd501e020b6988cc8160d170ad2e48bfb4f70cde9a004099ecffa076c",
+    "README.md": "816b041e62e42f186e4033012d57bad7e7e3e1dd101065b8a82d5b3e29491238",
+    "source/build_diamond.FCMacro": "59d5803c79774deb6d2065a6e3a8ee75a11c58958a15dd5cc1cb653bab4bafee",
+    "verification/v02.json": "798f04bac779432faf5a929a092c7c9cbd42b45683c512a45c47009631f4eec7",
+    "verification/v04.json": "3a0339670af3674ded0c92da5d6cb7083d41f68143242dfe63a5f90c17a3b2f6"
+  }
+}

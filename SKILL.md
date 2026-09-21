@@ -26,6 +26,8 @@ Help the user accomplish their CAD task through FreeCAD MCP, from a small edit t
 
 Before writing model code, read [FreeCAD execution and verification](references/freecad-workflow.md). For functional parts, mechanisms, or manufacturing preparation, also read [Manufacturing and mechanical design](references/manufacturing.md).
 
+When developing a fitted part from measurements or revising a physically tested print, read [Fitted parts and exterior revisions](references/fitted-revisions.md), especially before changing a confirmed-fit interior or adding surface texture.
+
 - Choose sketches, Part Design features, Part operations, surfaces, Draft geometry, assemblies, or drawing tools to suit the task and available workbenches. Do not force every object into a solid or every design into a single Body.
 - Prefer native constraints, expressions, spreadsheets, and feature dependencies for dimensions the user expects to edit. Avoid redundant constraints, accidental external references, and fragile face/edge references when a stable datum or sketch reference is practical.
 - Use meaningful object names and sensible grouping. Use App::Link for genuinely identical repeated components where appropriate. Preserve coordinate systems and placement relationships when importing or assembling geometry.
