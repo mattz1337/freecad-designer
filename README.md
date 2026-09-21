@@ -4,7 +4,29 @@ A Codex skill for creating, inspecting, modifying, and exporting CAD models thro
 
 Use it for new designs or changes to existing projects: parametric parts, imported geometry, sketches, surfaces, assemblies, technical drawings, and preparation for manufacturing or visualization. It adapts the workflow and checks to the request rather than treating every project as a 3D print.
 
-## Project gallery
+## Featured project: fitted pocketknife grip
+
+Our main worked example follows a real object from reference photos and measurements through a printed fit test, exterior concepts, and a revised FreeCAD model.
+
+![Reference photos of the original pocketknife, closed and open](examples/pocketknife-grip/images/knife-reference-photos.png)
+
+*Starting point: user-supplied photographs of the existing knife. The full example includes the measurements and prototype feedback.*
+
+![Three exterior concepts with private inscriptions obscured](examples/pocketknife-grip/images/concepts-redacted.png)
+
+*AI-generated design exploration: soft ribs, diamond, and pebble. Option 02, diamond, was selected; this illustration is a visual target, not a CAD result.*
+
+![Final diamond grip, actual FreeCAD preview](examples/pocketknife-grip/images/v04-diamond.png)
+
+*Implemented result: the V04 FreeCAD model with broad diamond coverage and a window over the inscription.*
+
+The removable, screw-fastened grip was developed through trial prints. **V02's fit was physically confirmed.** Later revisions slimmed the exterior and expanded the texture while preserving the fitted interior and fastener seats in CAD. **V04 has not been physically tested.**
+
+[Explore the complete knife project →](examples/pocketknife-grip/README.md)
+
+The example includes reference images, the supplied concept-selection screenshot, the confirmed baseline, final FCStd/STL files, a rebuild macro, and verification records. It demonstrates retention checks, preserving successful fit, matching texture coverage, and reassessing print orientation after cosmetic changes.
+
+## More projects
 
 Actual FreeCAD previews from the projects that informed this skill's workflow. These projects were created through FreeCAD MCP before the workflow was packaged as a reusable skill. The images show CAD models, not photographs of manufactured parts.
 
@@ -57,14 +79,6 @@ codex mcp add freecad -- uvx freecad-mcp
 
 Keep FreeCAD open and ask Codex to list its documents to verify the connection. Follow the [complete setup guide](docs/freecad-mcp-setup.md) for the correct addon path, manual TOML configuration, source-checkout setup, and troubleshooting. Installing the skill alone does not establish this connection.
 
-## Worked example: fitted pocketknife grip
-
-![Final diamond grip, CAD preview with an unlettered reference handle](examples/pocketknife-grip/images/v04-diamond.png)
-
-A removable, screw-fastened grip developed from measurements and trial prints. The user confirmed V02's fit; later exterior revisions slimmed the faces and expanded the diamond texture while retaining the fitted interior and fastener seats. V04 has CAD checks but has not been physically tested.
-
-The [worked example](examples/pocketknife-grip/README.md) includes the confirmed baseline, final FCStd and STL files, a rebuild macro, verification records, CAD previews, and a privacy-redacted concept board. It explains why collision checks alone missed retention, how the successful fit was preserved, and why the cosmetic revision changed print orientation.
-
 ## Install
 
 Ask Codex:
@@ -75,7 +89,7 @@ Use $skill-installer to install https://github.com/mattz1337/freecad-designer
 
 Alternatively, copy the repository into a `freecad-designer` folder in your Codex personal skills directory. Keep `SKILL.md`, `agents/`, and `references/` together. If it does not appear after installation, restart Codex.
 
-## Examples
+## Example prompts
 
 ```text
 Use $freecad-designer to inspect my existing FreeCAD model, increase the
