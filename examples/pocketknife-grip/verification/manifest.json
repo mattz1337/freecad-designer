@@ -4,7 +4,8 @@
   "files": {
     "images/concept-selection-screenshot.png": "9d8b680043a5c5cbf4a13f7d807a84859918173b56cd7e99c4e92f99dd1626c5",
     "images/concepts-redacted.png": "3608728a87d37a117486c2d1f26a3abeacbeafb4fc1b9ffd35923c7cd9a3c508",
-    "images/knife-reference-photos.png": "06e5c97134514bc70f9ec632c55c1314507fb36da947d55d303b2614f6734bf4",
+    "images/knife-closed.jpg": "b7dae103090979a6c82bdb049fb0c96822f56c48588a8e66fe276b7c5ea8d4c5",
+    "images/knife-open.jpg": "0fd48139b0af830b63e88aa9fbc26de6eba84acd4d13305c6a84c428e7486e13",
     "images/v02-assembly.png": "28c8d53531fe97eb21ee498aad90a80aebf2c0069a29f3bb5ccf0e2fdd0d389b",
     "images/v02-retaining-lip.png": "cb5ff9a07f3b215243e3cb4201494811f57d2ea86acaccd0e823668d2369e266",
     "images/v03-small-panels.png": "5033014b1b429562a8ca5da4d4482fb5880fd89cc65482187e89a376834ae917",
@@ -16,7 +17,7 @@
     "print/v02-window.stl": "a60db291c1feb1a6a50b8dda1fbb33f170a959fb2a27f21e4820a699020ff1dd",
     "print/v04-reverse.stl": "040ed13850ab9f04d6f5aaec526a7c23ff12272ebda47f2749069f9b67dff498",
     "print/v04-window.stl": "3b9e804bd501e020b6988cc8160d170ad2e48bfb4f70cde9a004099ecffa076c",
-    "README.md": "9139ea5fd075b41860df7caa7ee7d5d96d64d9bc8c5646df7ba28b4514d47e65",
+    "README.md": "b726be97082d42e48d1a7417f07b60ffe6789067f3333c10476fe4e43914b72c",
     "source/build_diamond.FCMacro": "59d5803c79774deb6d2065a6e3a8ee75a11c58958a15dd5cc1cb653bab4bafee",
     "verification/v02.json": "798f04bac779432faf5a929a092c7c9cbd42b45683c512a45c47009631f4eec7",
     "verification/v04.json": "3a0339670af3674ded0c92da5d6cb7083d41f68143242dfe63a5f90c17a3b2f6"
