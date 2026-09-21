@@ -1,0 +1,175 @@
+"""Option 02: exterior-only revision of the confirmed V02 fit.
+Run in FreeCAD GUI. Reads ../models/fit-confirmed-v02.FCStd; writes ../generated/V04_DIAMOND/.
+Native relief and crossed-groove pockets; source dimensions in mm.
+"""
+import FreeCAD as App, FreeCADGui as Gui, Part, Sketcher, MeshPart, Mesh
+from pathlib import Path
+import shutil, math, json
+ROOT=Path(__file__).resolve().parent.parent
+OUT=ROOT/'generated'/'V04_DIAMOND';OUT.mkdir(parents=True,exist_ok=True)
+target=OUT/'Griff_V04_Diamond.FCStd'
+if target.exists():raise RuntimeError('Output already exists; use a new revision folder.')
+shutil.copy2(ROOT/'models'/'fit-confirmed-v02.FCStd',target)
+d=App.openDocument(str(target));d.Label='V04 Diamond - confirmed V02 interior'
+V=App.Vector
+before={n:d.getObject(n).Shape.copy() for n in ('Fenster','Rueckseite')}
+for n in ('FensterAussenrundung','RueckseiteAussenrundung'):d.getObject(n).Radius=0.6
+# Remove the old visible ribs beneath the new continuous diamond pattern.
+d.FlacheGriffrillen.Length=0.01
+d.recompute(None,True,True)
+for o in d.Objects:
+    assert 'Invalid' not in o.State,(o.Name,str(o.State))
+
+def poly(sk,pts):
+    for a,b in zip(pts,pts[1:]+pts[:1]):
+        idx=sk.addGeometry(Part.LineSegment(V(a[0],a[1],0),V(b[0],b[1],0)),False)
+        sk.addConstraint(Sketcher.Constraint('Block',idx))
+def sketch(b,name,z):
+    sk=d.addObject('Sketcher::SketchObject',name);b.addObject(sk)
+    sk.Placement.Base=V(0,0,z)
+    return sk
+def pocket(b,name,sk,depth,reverse):
+    p=b.newObject('PartDesign::Pocket',name);p.Profile=sk;p.Length=depth;p.Reversed=reverse
+    d.recompute()
+    assert 'Invalid' not in p.State and not p.Shape.isNull() and p.Shape.isValid(),name
+    for ob in b.Group:ob.Visibility=False
+    p.Visibility=True
+    return p
+def face(pts):
+    vs=[V(x,y,0) for x,y in pts]
+    return Part.Face(Part.makePolygon(vs+[vs[0]]))
+
+texture_areas={}
+def planar_polygon(wire):
+    # Polygonize offset arcs before clipping; native groove profiles remain lines.
+    pts=wire.discretize(Deflection=0.025)
+    if (pts[-1]-pts[0]).Length>1e-7:pts.append(pts[0])
+    return Part.Face(Part.makePolygon(pts))
+for name,top in [('Fenster',True),('Rueckseite',False)]:
+    b=d.getObject(name);sign=1 if top else -1
+    sk=sketch(b,name+'ExteriorReliefProfile',sign*6.985)
+    poly(sk,[(-8,-8),(80,-8),(80,35),(-8,35)])
+    for x,y in [(13,19.1),(53,19.9)]:
+        idx=sk.addGeometry(Part.Circle(V(x,y,0),V(0,0,1),4.8),False)
+        sk.addConstraint(Sketcher.Constraint('Block',idx))
+    pocket(b,name+'SlimFace',sk,0.70,not top)
+    # Full silhouette-following texture, with narrow smooth perimeter and window borders.
+    outline=d.getObject(name+'Kontur').Shape.Wires[0].copy()
+    outline.translate(V(0,0,-outline.BoundBox.ZMin))
+    inset=outline.makeOffset2D(-1.2,join=2)
+    mask=planar_polygon(inset)
+    for x,y in [(13,19.1),(53,19.9)]:
+        # Circumscribed polygon protects the complete 5.2-mm-radius screw zone.
+        r=5.2/math.cos(math.pi/32)
+        exclusion=face([(x+r*math.cos(i*math.pi/16),y+r*math.sin(i*math.pi/16)) for i in range(32)])
+        mask=mask.cut(exclusion)
+    if top:
+        window=d.GravurfensterKontur.Shape.Wires[0].copy()
+        window.translate(V(0,0,-window.BoundBox.ZMin))
+        expanded=window.makeOffset2D(1.0,join=0)
+        assert Part.Face(expanded).Area>Part.Face(window).Area
+        mask=mask.cut(planar_polygon(expanded))
+    masks=[mask]
+    texture_areas[name]=mask.Area
+
+    # Each family is a set of non-overlapping grooves. The second pocket crosses
+    # the first to leave diamond-shaped lands rather than protruding spikes.
+    for family,slope in enumerate((1,-1),1):
+        gs=sketch(b,name+'DiamondProfile'+str(family),sign*6.285)
+        for c in range(-90,100,2):
+            w=0.45*math.sqrt(2)
+            stripe=face([(-10,slope*-10+c-w/2),(80,slope*80+c-w/2),
+                         (80,slope*80+c+w/2),(-10,slope*-10+c+w/2)])
+            for mask in masks:
+                clipped=mask.common(stripe)
+                for f in clipped.Faces:
+                    if f.Area<0.01:continue
+                    # All boundaries are straight since both masks and stripes
+                    # are polygonal. Add ordered edges to native sketch.
+                    for e in f.OuterWire.OrderedEdges:
+                        a=e.Vertexes[0].Point;bpt=e.Vertexes[-1].Point
+                        idx=gs.addGeometry(Part.LineSegment(a,bpt),False)
+                        gs.addConstraint(Sketcher.Constraint('Block',idx))
+        pocket(b,name+'DiamondGrooves'+str(family),gs,0.35,not top)
+    # Explicit perimeter taper avoids fragile edge-number chamfer references.
+    # This final generated BREP must be rebuilt by the macro after upstream edits.
+    base=b.Tip
+    wire=d.getObject(name+'Kontur').Shape.Wires[0].copy()
+    wire.translate(V(0,0,-wire.BoundBox.ZMin))
+    inner=wire.makeOffset2D(-0.5,join=2)
+    assert Part.Face(inner).Area<Part.Face(wire).Area
+    w0=wire.copy();w0.translate(V(0,0,5.785))
+    w1=inner.copy();w1.translate(V(0,0,6.285))
+    w2=inner.copy();w2.translate(V(0,0,8))
+    core=Part.makeLoft([w0,w1,w2],True,True)
+    tool=Part.makeBox(110,70,2.215,V(-15,-20,5.785)).cut(core)
+    for x,y in [(13,19.1),(53,19.9)]:
+        tool=tool.cut(Part.makeCylinder(5.3,4,V(x,y,5)))
+    if not top:
+        tool=tool.mirror(V(0,0,0),V(0,0,1))
+    result=base.Shape.cut(tool).removeSplitter()
+    assert result.isValid() and len(result.Solids)==1
+    ch=b.newObject('PartDesign::Feature',name+'PerimeterTaper')
+    ch.Label='Exterior 0.5 mm taper (macro-generated)';ch.Shape=result
+    ch.addProperty('App::PropertyString','RebuildNote').RebuildNote='Re-run source macro after upstream changes; this final BREP is not live parametric.'
+    d.recompute();base.Visibility=False;ch.Visibility=True
+    b.Tip.ViewObject.ShapeColor=(0.16,0.36,0.25)
+    b.Tip.ViewObject.LineColor=(0.12,0.18,0.14)
+    b.Tip.ViewObject.DisplayMode='Flat Lines'
+    b.Status='Diamond exterior; V02 fitted interior retained. New outer grip not physically tested.'
+
+d.Masse.set('A27','V04: outer faces relieved 0.70 mm; screw bosses retained')
+d.Masse.set('A28','Diamond groove depth 0.35 / width 0.45 / intercept pitch 2 mm')
+d.Masse.set('A29','Broad face thickness 3.30 mm; groove floor 2.95 mm')
+d.Masse.set('A30','V04 full-face texture: outer border 1.2 mm / window border 1.0 mm')
+d.recompute(None,True,True)
+checks={'revision':'V04 Diamond','units':'mm','fit_baseline':'User-confirmed V02',
+        'groove_depth_mm':0.35,'groove_width_mm':0.45,'face_relief_mm':0.70,
+        'broad_face_total_thickness_mm':12.57,'screw_boss_total_thickness_mm':13.97,
+        'minimum_planar_wall_at_groove_mm':2.95,'texture_panel_area_mm2':texture_areas,'outer_texture_border_mm':1.2,'window_texture_border_mm':1.0,'parts':[]}
+parts=[d.Fenster,d.Rueckseite]
+# Fit-bearing geometry and all inward-facing surfaces lie in this protected slab.
+protected=Part.makeBox(110,70,6.07,V(-15,-20,-3.035))
+for b in parts:
+    s=b.Shape;orig=before[b.Name]
+    assert s.isValid() and len(s.Solids)==1
+    errors=[o.Name for o in b.Group if 'Invalid' in o.State or 'Error' in o.State]
+    assert not errors,errors
+    a=s.common(protected);old=orig.common(protected)
+    diff=a.cut(old).Volume+old.cut(a).Volume
+    assert diff<1e-6,('interior changed',b.Name,diff)
+    hardware_diff=0
+    for x,y in [(13,19.1),(53,19.9)]:
+        zone=Part.makeCylinder(4.6,20,V(x,y,-10))
+        q=s.common(zone);r=orig.common(zone)
+        hardware_diff+=q.cut(r).Volume+r.cut(q).Volume
+    assert hardware_diff<1e-6,('fastener seats changed',hardware_diff)
+    st=s.copy()
+    # Texture faces up; the interior requires removable build-plate supports.
+    if b==parts[1]:st.rotate(V(0,0,0),V(1,0,0),180)
+    bb=st.BoundBox;st.translate(V(-bb.XMin,-bb.YMin,-bb.ZMin))
+    mesh=MeshPart.meshFromShape(Shape=st,LinearDeflection=0.06,AngularDeflection=0.15,Relative=False)
+    path=OUT/(b.Name+'_V04_Diamond.stl');mesh.write(str(path))
+    verify=Mesh.Mesh(str(path));assert verify.isSolid()
+    checks['parts'].append({'name':b.Name,'valid':True,'solids':1,'errors':errors,
+       'protected_interior_symmetric_difference_mm3':diff,'fastener_zone_difference_mm3':hardware_diff,
+       'volume_before_mm3':orig.Volume,'volume_after_mm3':s.Volume,
+       'material_reduction_percent':100*(1-s.Volume/orig.Volume),
+       'stl_closed_after_readback':True,'stl_facets':verify.CountFacets,
+       'print_orientation':'texture up; support underneath interior required'})
+checks['shell_intersection_mm3']=parts[0].Shape.common(parts[1].Shape).Volume
+assert checks['shell_intersection_mm3']<1e-6
+with open(OUT/'Verification_V04.json','w') as f:json.dump(checks,f,indent=2)
+Gui.Selection.clearSelection()
+d.MetallgriffReferenz.Visibility=True
+Gui.activeDocument().activeView().viewAxonometric();Gui.activeDocument().activeView().fitAll()
+d.recompute();d.save()
+Gui.activeDocument().activeView().saveImage(str(OUT/'Diamond_V04.png'),1600,1000,'White')
+Gui.activeDocument().activeView().viewBottom();Gui.activeDocument().activeView().fitAll()
+Gui.activeDocument().activeView().saveImage(str(OUT/'Diamond_V04_Reverse.png'),1600,1000,'White')
+Gui.activeDocument().activeView().viewAxonometric();Gui.activeDocument().activeView().fitAll()
+for backup in OUT.glob('Griff_V04_Diamond.*.FCBak'):
+    backup_dir=OUT/'backups';backup_dir.mkdir(exist_ok=True)
+    dest=backup_dir/backup.name
+    if not dest.exists():backup.rename(dest)
+print(json.dumps(checks,indent=2))

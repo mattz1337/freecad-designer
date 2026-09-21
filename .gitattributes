@@ -1,0 +1,6 @@
+*.md text eol=lf
+*.json text eol=lf
+*.FCMacro text eol=lf
+*.FCStd binary
+*.stl binary
+*.png binary

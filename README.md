@@ -45,6 +45,26 @@ The nut pocket was moved to the upper side of the lower clamp arm. A retaining s
 
 This repository contains skill instructions, not FreeCAD, a workbench, or an MCP server. Available operations depend on your installed workbenches and MCP tools. The skill checks those capabilities instead of promising unsupported operations.
 
+## Set up FreeCAD MCP
+
+Install [FreeCAD](https://www.freecad.org/downloads.php) and [uv](https://docs.astral.sh/uv/getting-started/installation/). Install the `addon/FreeCADMCP` folder from [neka-nat/freecad-mcp](https://github.com/neka-nat/freecad-mcp) into FreeCAD's user `Mod` directory, restart FreeCAD, select **MCP Addon**, and click **Start RPC Server**.
+
+Register the bridge with Codex:
+
+```sh
+codex mcp add freecad -- uvx freecad-mcp
+```
+
+Keep FreeCAD open and ask Codex to list its documents to verify the connection. Follow the [complete setup guide](docs/freecad-mcp-setup.md) for the correct addon path, manual TOML configuration, source-checkout setup, and troubleshooting. Installing the skill alone does not establish this connection.
+
+## Worked example: fitted pocketknife grip
+
+![Final diamond grip, CAD preview with an unlettered reference handle](examples/pocketknife-grip/images/v04-diamond.png)
+
+A removable, screw-fastened grip developed from measurements and trial prints. The user confirmed V02's fit; later exterior revisions slimmed the faces and expanded the diamond texture while retaining the fitted interior and fastener seats. V04 has CAD checks but has not been physically tested.
+
+The [worked example](examples/pocketknife-grip/README.md) includes the confirmed baseline, final FCStd and STL files, a rebuild macro, verification records, CAD previews, and a privacy-redacted concept board. It explains why collision checks alone missed retention, how the successful fit was preserved, and why the cosmetic revision changed print orientation.
+
 ## Install
 
 Ask Codex:
@@ -88,6 +108,9 @@ It distinguishes native parametric models from script-generated shapes, direct e
 - `SKILL.md`: general CAD workflow, including existing-model revisions.
 - `references/freecad-workflow.md`: execution, linked parts, motion, and verification details.
 - `references/manufacturing.md`: optional functional and manufacturing guidance.
+- `references/fitted-revisions.md`: measured fit, prototype feedback, protected interfaces, and texture coverage.
+- `docs/freecad-mcp-setup.md`: addon and Codex bridge setup.
+- `examples/pocketknife-grip/`: documented project with CAD, print files, source, and images.
 - `agents/openai.yaml`: Codex skill metadata.
 
 See the [official skill documentation](https://learn.chatgpt.com/docs/build-skills) for discovery and configuration.
