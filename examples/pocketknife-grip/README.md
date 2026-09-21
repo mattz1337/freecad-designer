@@ -6,9 +6,11 @@ A removable two-piece grip for an existing folding pocketknife, fastened with sc
 
 ## Starting point: the existing knife
 
-![User-supplied reference photos showing the knife closed and open](images/knife-reference-photos.png)
+| Closed | Open |
+| --- | --- |
+| ![Original photograph of the closed knife](images/knife-closed.jpg) | ![Original photograph of the open knife](images/knife-open.jpg) |
 
-These are photographs of the original knife on a measuring mat, supplied as a small reference collage. They document the starting object; the measured dimensions below and the physical fit test provide the fit evidence.
+These are photographs of the original knife on a measuring mat, shown here from the original full-resolution files. They document the starting object; the measured dimensions below and the physical fit test provide the fit evidence.
 
 ## Result and design exploration
 
@@ -16,7 +18,7 @@ These are photographs of the original knife on a measuring mat, supplied as a sm
 | --- | --- |
 | ![Diamond grip with inscription window](images/v04-diamond.png) | ![Diamond texture on reverse grip shell](images/v04-reverse.png) |
 
-The following board is an **AI-generated visual concept**, not a manufacturing drawing. Option 02 was selected. Private inscriptions have been obscured; only the supplied non-inscription reference collage and privacy-safe concepts are included. Unredacted inscription photos are not included.
+The following board is an **AI-generated visual concept**, not a manufacturing drawing. Option 02 was selected. Private inscriptions have been obscured; only the original non-inscription reference photos and privacy-safe concepts are included. Unredacted inscription photos are not included.
 
 ![Three exterior concepts with inscriptions obscured](images/concepts-redacted.png)
 

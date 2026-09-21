@@ -8,7 +8,9 @@ Use it for new designs or changes to existing projects: parametric parts, import
 
 Our main worked example follows a real object from reference photos and measurements through a printed fit test, exterior concepts, and a revised FreeCAD model.
 
-![Reference photos of the original pocketknife, closed and open](examples/pocketknife-grip/images/knife-reference-photos.png)
+| Closed | Open |
+| --- | --- |
+| ![Original photograph of the closed knife](examples/pocketknife-grip/images/knife-closed.jpg) | ![Original photograph of the open knife](examples/pocketknife-grip/images/knife-open.jpg) |
 
 *Starting point: user-supplied photographs of the existing knife. The full example includes the measurements and prototype feedback.*
 
