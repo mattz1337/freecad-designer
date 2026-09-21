@@ -4,15 +4,30 @@ A removable two-piece grip for an existing folding pocketknife, fastened with sc
 
 **Evidence:** the user physically printed and confirmed the fit of **V02**. **V04** preserves selected functional regions in CAD and passed the recorded geometry/mesh checks; it has not been physically print-tested. Blade motion was not simulated because a measured blade/pivot envelope was unavailable. The gray handle in previews is a simplified reference, not a complete mechanism.
 
+## Starting point: the existing knife
+
+![User-supplied reference photos showing the knife closed and open](images/knife-reference-photos.png)
+
+These are photographs of the original knife on a measuring mat, supplied as a small reference collage. They document the starting object; the measured dimensions below and the physical fit test provide the fit evidence.
+
 ## Result and design exploration
 
 | Window side, final V04 CAD | Reverse side, final V04 CAD |
 | --- | --- |
 | ![Diamond grip with inscription window](images/v04-diamond.png) | ![Diamond texture on reverse grip shell](images/v04-reverse.png) |
 
-The following board is an **AI-generated visual concept**, not a manufacturing drawing. Option 02 was selected. Private inscriptions have been obscured; original photos and uncensored concepts are deliberately absent from this example.
+The following board is an **AI-generated visual concept**, not a manufacturing drawing. Option 02 was selected. Private inscriptions have been obscured; only the supplied non-inscription reference collage and privacy-safe concepts are included. Unredacted inscription photos are not included.
 
 ![Three exterior concepts with inscriptions obscured](images/concepts-redacted.png)
+
+<details>
+<summary>View the user-supplied concept-selection screenshot</summary>
+
+![Screenshot of the three exterior options with the inscriptions obscured](images/concept-selection-screenshot.png)
+
+This supplied screenshot records the concept comparison as viewed in the conversation. The clean concept board above is used for the main presentation. Both show an AI-generated visual concept, not a manufactured part.
+
+</details>
 
 ## Iterations and what they taught us
 
