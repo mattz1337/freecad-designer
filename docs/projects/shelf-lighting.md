@@ -6,7 +6,7 @@ The modular rail holds an LED strip for indirect shelf lighting. Its printed att
 | --- | --- |
 | ![Green printed rail and clamp at the shelf edge](../images/shelf-lighting-printed-mounted.jpg) | ![Side view of the printed shelf clamp and its screw](../images/shelf-lighting-printed-clamp.jpg) |
 
-The photos establish that a clamp and rail were printed and placed on a shelf. They do not establish the LED strip's electrical installation, long-term load capacity, or the exact CAD revision used for the print.
+The photos establish that a clamp and rail were printed and placed on a shelf. They are stored upright in portrait orientation with the camera's EXIF rotation applied to the pixels and source metadata removed, so the views render consistently in the README and on GitHub. They do not establish the LED strip's electrical installation, long-term load capacity, or the exact CAD revision used for the print.
 
 ## CAD design and revision
 
