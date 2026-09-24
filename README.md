@@ -18,25 +18,23 @@ Our main worked example follows a real object from reference photos and measurem
 
 *AI-generated design exploration: soft ribs, diamond, and pebble. Option 02, diamond, was selected; this illustration is a visual target, not a CAD result.*
 
-![Final diamond grip, actual FreeCAD preview](examples/pocketknife-grip/images/v04-diamond.png)
+![Printed diamond grip on the knife, with the private engraving obscured](examples/pocketknife-grip/images/printed-window-side-redacted.jpg)
 
-*Implemented result: the V04 FreeCAD model with broad diamond coverage and a window over the inscription.*
+*Printed assembly, photographed by the user. The engraving is deliberately unreadable in this repository copy.*
 
-The removable, screw-fastened grip was developed through trial prints. **V02's fit was physically confirmed.** Later revisions slimmed the exterior and expanded the texture while preserving the fitted interior and fastener seats in CAD. **V04 has not been physically tested.**
+![Diamond grip, actual FreeCAD preview](examples/pocketknife-grip/images/v04-diamond.png)
+
+*CAD result: the V04 model with broad diamond coverage. The photographed print is a later prototype; its exact revision is not established from the photos alone.*
+
+The removable, screw-fastened grip was developed through trial prints. **V02's fit was physically confirmed.** Later revisions slimmed the exterior and expanded the texture while preserving the fitted interior and fastener seats in CAD. The new photographs show an assembled diamond-textured print; they do not establish a complete blade-motion or strength test for a particular CAD revision.
 
 [Explore the complete knife project →](examples/pocketknife-grip/README.md)
 
-The example includes reference images, the supplied concept-selection screenshot, the confirmed baseline, final FCStd/STL files, a rebuild macro, and verification records. It demonstrates retention checks, preserving successful fit, matching texture coverage, and reassessing print orientation after cosmetic changes.
+The example includes reference and printed-prototype photos, the supplied concept-selection screenshot, the confirmed baseline, V04 FCStd/STL files, a rebuild macro, and verification records. It demonstrates retention checks, preserving successful fit, matching texture coverage, and reassessing print orientation after cosmetic changes.
 
 ## More projects
 
-Actual FreeCAD previews from the projects that informed this skill's workflow. These projects were created through FreeCAD MCP before the workflow was packaged as a reusable skill. The images show CAD models, not photographs of manufactured parts.
-
-### Hand-cranked miniature conveyor
-
-![Miniature conveyor with two rollers, a black belt, orange bearing blocks, and a hand crank](docs/images/mini-conveyor.png)
-
-A small conveyor designed around PLA components and a TPU belt, with repeated linked parts, printable D-shafts, and an adjustable rear roller. The workflow included solid and mesh checks plus collision checks at sampled crank positions.
+Other projects that informed this skill's workflow. CAD previews and photographs of printed parts are identified separately below.
 
 ### Desktop display enclosure
 
@@ -51,6 +49,12 @@ A desktop enclosure for a Waveshare 7-inch display, designed around supplied com
 ![Modular shelf lighting rail with a corner connection and screw clamp](docs/images/shelf-lighting.png)
 
 A modular LED-strip holder for indirect shelf lighting, including rails, a corner connection, and shelf attachment. The assembly preview shows the system concept; the detail below shows the subsequent clamp revision.
+
+| Printed rail and clamp in place | Printed clamp from the side |
+| --- | --- |
+| ![Green printed shelf-lighting rail and clamp mounted on a shelf](docs/images/shelf-lighting-printed-mounted.jpg) | ![Side view of the green printed clamp holding the shelf edge](docs/images/shelf-lighting-printed-clamp.jpg) |
+
+*User-supplied photographs of the printed shelf attachment. See the [shelf-lighting project notes](docs/projects/shelf-lighting.md) for the CAD and print context.*
 
 <details>
 <summary>View the revised captive-nut pocket</summary>
@@ -104,8 +108,8 @@ with an editable wall thickness and a dimensioned technical drawing.
 ```
 
 ```text
-Use $freecad-designer to build a hand-cranked miniature conveyor using
-PLA and TPU, with repeated components and checked motion positions.
+Use $freecad-designer to revise my shelf-lighting clamp so the nut has a
+positive retaining shoulder, then verify the fit and print orientation.
 ```
 
 ```text

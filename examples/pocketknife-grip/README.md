@@ -2,7 +2,7 @@
 
 A removable two-piece grip for an existing folding pocketknife, fastened with screws along an external spine. The design enlarges the grip, preserves access for folding, and includes a window over an inscription. All dimensions are in millimeters. This is a specific fitted example, not a universal knife accessory.
 
-**Evidence:** the user physically printed and confirmed the fit of **V02**. **V04** preserves selected functional regions in CAD and passed the recorded geometry/mesh checks; it has not been physically print-tested. Blade motion was not simulated because a measured blade/pivot envelope was unavailable. The gray handle in previews is a simplified reference, not a complete mechanism.
+**Evidence:** the user physically printed and confirmed the fit of **V02**. **V04** preserves selected functional regions in CAD and passed the recorded geometry/mesh checks. Later user-supplied photographs show an assembled diamond-textured print, but do not by themselves identify its exact CAD revision or prove full blade clearance or strength. Blade motion was not simulated because a measured blade/pivot envelope was unavailable. The gray handle in previews is a simplified reference, not a complete mechanism.
 
 ## Starting point: the existing knife
 
@@ -11,6 +11,14 @@ A removable two-piece grip for an existing folding pocketknife, fastened with sc
 | ![Original photograph of the closed knife](images/knife-closed.jpg) | ![Original photograph of the open knife](images/knife-open.jpg) |
 
 These are photographs of the original knife on a measuring mat, shown here from the original full-resolution files. They document the starting object; the measured dimensions below and the physical fit test provide the fit evidence.
+
+## Printed prototype photographs
+
+| Window side, engraving obscured | Reverse textured side |
+| --- | --- |
+| ![Printed diamond grip on the folded knife with the inscription blurred](images/printed-window-side-redacted.jpg) | ![Reverse of the printed diamond grip on the folded knife](images/printed-reverse-side.jpg) |
+
+These user-supplied photographs show a screw-mounted, diamond-textured grip on the knife. The first image is a **redacted derivative**: the entire engraving area was strongly blurred before inclusion, and source metadata was omitted. The unredacted photograph is not stored in this repository. The photos document a later physical prototype, while the versioned V02/V04 files and their verification records remain separate evidence.
 
 ## Result and design exploration
 
@@ -38,7 +46,7 @@ This supplied screenshot records the concept comparison as viewed in the convers
 | V01 | Measured thickness and approximate photographic outline; screwed shells with open lower edges | Trial print was too short and the handle could escape downward. Zero interference did not establish retention. |
 | V02 | Added retaining lips and extended the front by 8.53 mm | User confirmed that the fit was good. This exact version was frozen before cosmetic work. |
 | V03 | Relieved broad outer faces by 0.70 mm per side and added crossed grooves | Protected interfaces matched V02 in CAD, but the small texture patches did not match the selected concept's coverage. |
-| V04 | Clipped a continuous diamond field to the silhouette, window, and screw exclusions | Larger coverage without changing diamond dimensions; recorded interface comparisons and mesh checks passed. No physical V04 test yet. |
+| V04 | Clipped a continuous diamond field to the silhouette, window, and screw exclusions | Larger coverage without changing diamond dimensions; recorded interface comparisons and mesh checks passed. These checks refer to the V04 CAD files. |
 
 | Confirmed V02 baseline, CAD | Retaining lip detail, CAD |
 | --- | --- |
